@@ -86,7 +86,19 @@
                     <div class="form-group">
                         <label for="servidor-unidad" class="col-sm-2 control-label">Unidad</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="servidor-unidad" placeholder="">
+                            <select class="form-control" id="servidor-unidad">
+                                <option value="adminisatrativa">Adminisatrativa</option>
+                                <option value="auditoria">Auditoria</option>
+                                <option value="dddlapaz">DDD La Paz</option>
+                                <option value="eae">EAE</option>
+                                <option value="juridica">Juridica</option>
+                                <option value="planificacion">Planificacion</option>
+                                <option value="sub1">Sub 1</option>
+                                <option value="sub2">Sub 2</option>
+                                <option value="sub3">Sub 3</option>
+                                <option value="tranparencia">Tranparencia</option>
+                                <option value="utic">Utic</option>
+                            </select>
                         </div>
                     </div>
 
