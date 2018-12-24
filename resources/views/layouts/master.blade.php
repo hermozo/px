@@ -99,18 +99,18 @@
                                 <a href="{{ url('direcciones') }}"><i class="fa fa-map-marker" aria-hidden="true"></i> Direcciones </a>
                             </li>
                             <li>
-                                <a href="{{ url('galery/1') }}"><i class="fa fa-file-video-o" aria-hidden="true"></i> Tutoriales y videos  </a> <!-- 1 -->
+                                <a href="{{ url('galery/1') }}"><i class="fa fa-file-video-o" aria-hidden="true"></i> Tutoriales y videos  </a> 
                             </li>
                             <li>
-                                <a href="{{ url('galery/2') }}"><i class="fa fa-picture-o" aria-hidden="true"></i> Galería de imagenes WEB  </a> <!-- 2 -->
-                            </li>
+                                <a href="{{ url('galery/2') }}"><i class="fa fa-picture-o" aria-hidden="true"></i> Galería de imagenes WEB  </a>
+                            </li> 
+
+                            <!--li>
+                                <a href="#"><i class="fa fa-users" aria-hidden="true"></i> Unidades de la institución  </a>
+                            </li--> 
 
                             <li>
-                                <a href="#"><i class="fa fa-users" aria-hidden="true"></i> Unidades de la institución * </a>
-                            </li>
-
-                            <li>
-                                <a href="#"><i class="fa fa-users" aria-hidden="true"></i> Servidores de la institución * </a>
+                                <a href="{{ url('servidores') }}"><i class="fa fa-users" aria-hidden="true"></i> Servidores de la institución </a>
                             </li>
 
 
@@ -157,6 +157,7 @@
         <script src="{{ URL::to('js/Galeria.js') }}"></script>
         <script src="{{ URL::to('js/Direcciones.js') }}"></script>
         <script src="{{ URL::to('js/Galery.js') }}"></script>
+        <script src="{{ URL::to('js/Servidores.js') }}"></script>
 
         <?php
 
@@ -200,7 +201,7 @@
 
                                    function listado() {
                                        if (imagenes.length == iterador) {
-                                           //location.reload();
+                                           location.reload();
                                        } else {
                                            uploadfile(imagenes[iterador]);
                                            subidos += '<li class="list-group-item">' + imagenes[iterador].name + '</li>';
@@ -214,6 +215,7 @@
                                        new Galeria();
                                        new Direcciones();
                                        new Galery();
+                                       new Servidores();
 
                                        /********************/
                                        var dt = new DashTimer('#timer').init({

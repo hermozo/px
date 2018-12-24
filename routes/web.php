@@ -32,6 +32,7 @@ Route::resource('informaciones', 'InformacionesController');
 Route::resource('direcciones', 'DireccionesController');
 Route::resource('infografia', 'InfografiaController');
 Route::resource('galery', 'GaleryController');
+Route::resource('servidores', 'ServidoresController');
 
 /* LOGIN */
 //Auth::routes();
@@ -48,7 +49,7 @@ Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 Route::get('/home', 'HomeController@index')->name('home');
 
-/*************************David Rutas*****************************/
+/* * ***********************David Rutas**************************** */
 Route::get('page/{p1?}', 'WebsiteController@index');
 Route::get('detail/{id}', 'WebsiteController@detail');
 Route::get('faq', 'WebsiteController@faq');

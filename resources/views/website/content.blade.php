@@ -3,6 +3,7 @@
 @section('content')
 <!-- <link href="{{ asset('css/bxSlider.css') }}" rel="stylesheet">-->
 <link href="{{ asset('css/page.css') }}" rel="stylesheet">
+<link href="{{ asset('css/stylos.css') }}" rel="stylesheet">
 <section id="content_page">
     <br/>
     <?php
