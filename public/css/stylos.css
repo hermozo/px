@@ -1,0 +1,25 @@
+/*PÁGINA Procuradora*/
+.d-orden{
+  text-align: justify;
+  font-size: 14px;
+  padding-top: 20px;
+}
+/* página misión, visión */
+.d-titulo{
+  color: #0a527e;
+  text-align: center;
+  text-transform: uppercase;
+}
+.d-marco {
+  border: 1px solid #0a527e;
+  border-style: dashed;
+  padding: 20px;
+  margin-top: 20px;
+}
+/* página principios */
+.d-lista {
+  list-style: none;
+}
+.d-lista> li:before {
+  content: '✓';
+}
