@@ -52,12 +52,12 @@ class MultimediaController extends Controller {
                 /*                 * */
                 $r = 0;
                 if (isset($_POST["tipo"])) {
-                    $r = $_POST["tipo"];
+                    $r = 1;
                 } else {
                     $r = Session::get('ID');
                 }
                 $model = new Multimedia();
-                $model->tipo = 'imagen';
+                $model->tipo = $_POST["tipo"];
                 $model->nombre = $fileName;
                 $model->texto = $array[0];
                 $model->slide = $r;

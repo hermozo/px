@@ -200,7 +200,7 @@
 
                                    function listado() {
                                        if (imagenes.length == iterador) {
-                                           location.reload();
+                                           //location.reload();
                                        } else {
                                            uploadfile(imagenes[iterador]);
                                            subidos += '<li class="list-group-item">' + imagenes[iterador].name + '</li>';
