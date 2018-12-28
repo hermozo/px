@@ -17,7 +17,21 @@ Route::get('/', function () {
     $noticias = $ws->getContents('noticia');
     $casos = $ws->getContents('casos');
     $comunicados = $ws->getContents('comunicado');
-    return view('website.index', compact('slides', 'noticias', 'casos', 'comunicados'));
+    /*     * *MIGUEL* */
+    $organizacion = $ws->getSiteContent(427);
+    $pasantias = $ws->getSiteContent(428);
+    $reportaje = $ws->getSiteContent(429);
+    return view('website.index', compact('slides', 'noticias', 'casos', 'comunicados', 'organizacion', 'pasantias', 'reportaje'));
+});
+
+
+Route::get("direccionessite", function() {
+    return view('website.direccionessite');
+});
+Route::get("vibliotecavirtual", function() {
+    $ws = new \App\Website();
+    $virtual = $ws->getSiteContent(430);
+    return view('website.vibliotecavirtual', ['virtual' => $virtual]);
 });
 
 Route::get('sitioweb', 'SitiowebsiteController@index');
@@ -33,6 +47,11 @@ Route::resource('direcciones', 'DireccionesController');
 Route::resource('infografia', 'InfografiaController');
 Route::resource('galery', 'GaleryController');
 Route::resource('servidores', 'ServidoresController');
+Route::resource('uploadservidor', 'UploadController');
+
+
+
+
 
 /* LOGIN */
 //Auth::routes();

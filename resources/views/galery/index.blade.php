@@ -2,10 +2,19 @@
 @section('content')
 
 <?php
-if ($tipo == 1) {
-    $nombretipo = "Tutorial";
-} else {
-    $nombretipo = "Galeria";
+switch ($tipo) {
+    case(1):
+        $nombretipo = "Tutorial";
+        $texto = "Galeria";
+        break;
+    case(2):
+        $nombretipo = "Galeria";
+        $texto = "Imagenes";
+        break;
+    case(3):
+        $nombretipo = "Revistas";
+        $texto = "Fotos";
+        break;
 }
 ?>
 
@@ -76,9 +85,9 @@ if ($tipo == 1) {
     </tr>
     @foreach ($data as $d)
     <tr> 
-        <td style="width: 200px"> 
+        <td style="width: 250px"> 
             <p>
-                <a href="{{ url('multimedia/'.$d->id) }}" type="button" class="btn btn-success btn-xs"><i class="fa fa-edit" aria-hidden="true"></i>  Fotos</a>
+                <a href="{{ url('uploadservidor/'.$d->id) }}" type="button" class="btn btn-success btn-xs"><i class="fa fa-edit" aria-hidden="true"></i>  <?= $texto; ?></a>
                 <button type="button" class="btn btn-default btn-xs"><i class="fa fa-edit" aria-hidden="true"></i>  Editar</button>
                 <button type="button" class="btn btn-danger btn-xs eliminar-galery" data-id="{{ $d->id }}">
                     <i class="fa fa-times" aria-hidden="true"></i> Borrar</button>

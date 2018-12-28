@@ -7,9 +7,6 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-
-
-
         <title>Admin</title> 
         <link href="{{ URL::to('admin/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet"/>
         <link href="{{ URL::to('admin/vendor/metisMenu/metisMenu.min.css') }}" rel="stylesheet"/>
@@ -104,23 +101,23 @@
                             <li>
                                 <a href="{{ url('galery/2') }}"><i class="fa fa-picture-o" aria-hidden="true"></i> Galería de imagenes WEB  </a>
                             </li> 
-
+                            <li>
+                                <a href="{{ url('galery/3') }}"><i class="fa fa-th-list" aria-hidden="true"></i> Revistas </a>
+                            </li>
                             <!--li>
                                 <a href="#"><i class="fa fa-users" aria-hidden="true"></i> Unidades de la institución  </a>
-                            </li--> 
+                            </li> 
 
                             <li>
                                 <a href="{{ url('servidores') }}"><i class="fa fa-users" aria-hidden="true"></i> Servidores de la institución </a>
                             </li>
 
 
-                            <li>
-                                <a href="#"><i class="fa fa-th-list" aria-hidden="true"></i> Revistas * </a>
-                            </li>
+                          
 
                             <li>
                                 <a href="#"><i class="fa fa-th-list" aria-hidden="true"></i> Preguntas frecuentes * </a>
-                            </li>
+                            </li-->
 
                         </ul>
                     </div>
@@ -216,6 +213,16 @@
                                        new Direcciones();
                                        new Galery();
                                        new Servidores();
+
+
+                                       /********************/
+
+
+
+
+                                       $("#sortable").sortable();
+                                       $("#sortable").disableSelection();
+
 
                                        /********************/
                                        var dt = new DashTimer('#timer').init({

@@ -6,6 +6,12 @@
 
 <span id="url-pagina" name="{{ URL::to('api') }}"></span>
 
+
+<pre>
+    <?= $pagext ?>
+</pre>
+
+
 <div class="jumbotron">
     <?= $html; ?>
 </div>

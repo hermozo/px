@@ -1,7 +1,7 @@
 @extends('layouts.website')
 @section('title', 'Inicio')
 @section('content')
-<?php 
+<?php
 ?>
 <link href="{{ asset('css/bxSlider.css') }}" rel="stylesheet">
 <link href="{{ asset('css/index.css') }}" rel="stylesheet">
@@ -103,21 +103,21 @@
             @foreach($noticias as $key=>$model)
             <div class="col-md-3 col-xs-4">
                 <div class="choice_item" id="{{$model->id}}">
-					<img src="{{ asset('images/imagen_4x4.png') }}" title="{{$model->titulo}}" style="background-image: url({{ asset('images/'.$model->portal) }}); background-size:cover; background-position:top center;" alt="{{$model->titulo}}"/>
-					<div class="choice_text">
-						<!--div class="date">
-							<a class="gad_btn" href="#">Gadgets</a>
-							<a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-							<a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-						</div-->
-						<a href="#"><h4>{{$model->titulo}}</h4></a>
-						<!--p>Planning to visit Las Vegas or any other vacational resort where casinos</p>-->
-					</div>
-				</div>
+                    <img src="{{ asset('images/imagen_4x4.png') }}" title="{{$model->titulo}}" style="background-image: url({{ asset('images/'.$model->portal) }}); background-size:cover; background-position:top center;" alt="{{$model->titulo}}"/>
+                    <div class="choice_text">
+                        <!--div class="date">
+                                <a class="gad_btn" href="#">Gadgets</a>
+                                <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
+                                <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
+                        </div-->
+                        <a href="#"><h4>{{$model->titulo}}</h4></a>
+                        <!--p>Planning to visit Las Vegas or any other vacational resort where casinos</p>-->
+                    </div>
+                </div>
             </div>
             @endforeach
             <div class="col-md-12 row_btn">
-            	<a href="{{ URL::to('/noticias') }}" class="btn btn-default">Ver más</a><br/><br/>
+                <a href="{{ URL::to('/noticias') }}" class="btn btn-default">Ver más</a><br/><br/>
             </div>
         </div>
     </div>
@@ -138,21 +138,21 @@
             @foreach($comunicados as $key=>$model)
             <div class="col-md-3 col-xs-4">
                 <div class="choice_item" id="{{$model->id}}">
-					<img src="{{ asset('images/imagen_4x4.png') }}" title="{{$model->titulo}}" style="background-image: url({{ asset('images/'.$model->portal) }}); background-size:cover; background-position:top center;" alt="{{$model->titulo}}"/>
-					<div class="choice_text">
-						<!--div class="date">
-							<a class="gad_btn" href="#">Gadgets</a>
-							<a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-							<a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-						</div-->
-						<a href="#"><h4>{{$model->titulo}}</h4></a>
-						<!--p>Planning to visit Las Vegas or any other vacational resort where casinos</p>-->
-					</div>
-				</div>
+                    <img src="{{ asset('images/imagen_4x4.png') }}" title="{{$model->titulo}}" style="background-image: url({{ asset('images/'.$model->portal) }}); background-size:cover; background-position:top center;" alt="{{$model->titulo}}"/>
+                    <div class="choice_text">
+                        <!--div class="date">
+                                <a class="gad_btn" href="#">Gadgets</a>
+                                <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
+                                <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
+                        </div-->
+                        <a href="#"><h4>{{$model->titulo}}</h4></a>
+                        <!--p>Planning to visit Las Vegas or any other vacational resort where casinos</p>-->
+                    </div>
+                </div>
             </div>
             @endforeach
             <div class="col-md-12 row_btn">
-            	<a href="{{ URL::to('comunicados') }}" class="btn btn-default">Ver más</a><br/><br/>
+                <a href="{{ URL::to('comunicados') }}" class="btn btn-default">Ver más</a><br/><br/>
             </div>
         </div>
     </div>
@@ -162,41 +162,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <h3>NUESTRO EQUIPO</h3>
+                    <h3>ORGANIZACION</h3>
                 </div>
             </div>
         </div>
     </div>
     <div class="triangle"></div>
     <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="{{URL::asset('images/user.png')}}" alt="Juan lovera">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Card title</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="{{URL::asset('images/user.png')}}" alt="Juan lovera">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Card title</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="{{URL::asset('images/user.png')}}" alt="Juan lovera">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Card title</h5>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+        <?= $organizacion[0]->texto; ?>
     </div>
+
 </section>
 <section id="section6">
     <div class="bg_blue">
@@ -214,21 +189,21 @@
             @foreach($casos as $key=>$model)
             <div class="col-md-3 col-xs-4">
                 <div class="choice_item" id="{{$model->id}}">
-					<img src="{{ asset('images/imagen_4x4.png') }}" title="{{$model->titulo}}" style="background-image: url({{ asset('images/'.$model->portal) }}); background-size:cover; background-position:top center;" alt="{{$model->titulo}}"/>
-					<div class="choice_text">
-						<!--div class="date">
-							<a class="gad_btn" href="#">Gadgets</a>
-							<a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-							<a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-						</div-->
-						<a href="#"><h4>{{$model->titulo}}</h4></a>
-						<!--p>Planning to visit Las Vegas or any other vacational resort where casinos</p>-->
-					</div>
-				</div>
+                    <img src="{{ asset('images/imagen_4x4.png') }}" title="{{$model->titulo}}" style="background-image: url({{ asset('images/'.$model->portal) }}); background-size:cover; background-position:top center;" alt="{{$model->titulo}}"/>
+                    <div class="choice_text">
+                        <!--div class="date">
+                                <a class="gad_btn" href="#">Gadgets</a>
+                                <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
+                                <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
+                        </div-->
+                        <a href="#"><h4>{{$model->titulo}}</h4></a>
+                        <!--p>Planning to visit Las Vegas or any other vacational resort where casinos</p>-->
+                    </div>
+                </div>
             </div>
             @endforeach
             <div class="col-md-12 row_btn">
-            	<a href="{{ URL::to('casos') }}" class="btn btn-default">Ver más</a><br/><br/>
+                <a href="{{ URL::to('casos') }}" class="btn btn-default">Ver más</a><br/><br/>
             </div>
         </div>
     </div>
@@ -246,11 +221,20 @@
     <div class="triangle"></div>
     <div class="container">
         <div class="row">
-            <div class="col-md-3 col-xs-4">
-                <h3>Contenido</h3>
-            </div>
+            <?php for ($i = 0; $i <= 3; $i++) { ?>
+                <div class="col-md-3">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="{{URL::asset('images/pdf.png')}}" alt="Juan lovera">
+                        <div class="card-body">
+                            <h5 class="card-title text-center"><b><a href="{{ URL::to('libro/samples/magazine/index.html') }} " target="_blank"> Boletin 3-22017</a></b></h5> 
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
         </div>
     </div>
+    <br/>
+    <br/>
 </section>
 <section id="section8">
     <div class="bg_blue">
@@ -264,11 +248,7 @@
     </div>
     <div class="triangle"></div>
     <div class="container">
-        <div class="row">
-            <div class="col-md-3 col-xs-4">
-                <h3>Contenido</h3>
-            </div>
-        </div>
+        <?= $pasantias[0]->texto; ?>
     </div>
 </section>
 <section id="section9">
@@ -283,24 +263,20 @@
     </div>
     <div class="triangle"></div>
     <div class="container">
-        <div class="row">
-           <div class="col-md-12">
-           	<h3>Contenido</h3>
-           </div>
-        </div>
+        <?= $reportaje[0]->texto; ?>
     </div>
 </section>
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="modal_view">
-	<div class="modal-dialog modal-lg" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title">.</h4>
-			</div>
-			<div class="modal-body" id="content_modal">
-				
-			</div>
-		</div>
-	</div>
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">.</h4>
+            </div>
+            <div class="modal-body" id="content_modal">
+
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

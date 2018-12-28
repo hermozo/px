@@ -11,15 +11,17 @@
                 <h4 class="modal-title">Servidor</h4>
             </div>
             <div class="modal-body">
+
+                <span id="referenciaImagen"  name="{{URL::to('images/')}}"></span>
+                <span id="imgUploadServidores" name="<?= URL::to('uploadservidor') ?>"></span>
+                <form method='post' action='' class="btn-file" enctype='multipart/form-data'>
+                    {{ csrf_field() }}
+                    <input  id="servidor-foto-upload" type="file" name="file[]"  multiple>
+                </form>  
+                <img id="imgUploadChangeservidor" class="img-thumbnail img-responsive"/>
                 <form class="form-horizontal">
-
-                    <div class="form-group">
-                        <label for="servidor-foto" class="col-sm-2 control-label">Foto</label>
-                        <div class="col-sm-10">
-                            <input type="file" class="form-control" id="servidor-foto" >
-                        </div>
-                    </div>
-
+                    {{ csrf_field() }}
+                    <input type="hidden" class="form-control" id="servidor-foto" >
                     <div class="form-group">
                         <label for="servidor-nombre" class="col-sm-2 control-label">Nombre</label>
                         <div class="col-sm-10">
@@ -101,17 +103,13 @@
                             </select>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label for="servidor-descripcion" class="col-sm-2 control-label">Alguna descripción</label>
                         <div class="col-sm-10">
                             <textarea class="form-control" id="servidor-descripcion"></textarea>
                         </div>
                     </div>
-
                 </form>
-
-
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
@@ -135,8 +133,7 @@
         <td><b>Nombre </b></td>
         <td><b>Profeción </b></td>
         <td><b>Dirección </b></td>
-        <td><b>Telefono </b></td>
-        <td><b>Interno </b></td>
+        <td><b>Tel-int </b></td>
         <td><b>Email </b></td>
         <td><b>Unidad </b></td>
         <td><b>Descripción</b></td>
@@ -151,12 +148,11 @@
                     <i class="fa fa-times" aria-hidden="true"></i> Borrar</button>
             </p>
         </td>
-        <td><b> </b></td>
+        <td> <img src="{{ URL::to('images/').'/'.$d->foto }}" class="img-thumbnail" style="width: 100px"></td>
         <td><?= $d->nombre . " " . $d->apellidop . " " . $d->apellidom ?></td>
         <td><?= $d->profecion ?></td>
         <td><?= $d->direccion ?></td>
-        <td><?= $d->telefono ?></td>
-        <td><?= $d->interno ?></td>
+        <td><?= $d->telefono . '-' . $d->interno ?></td>
         <td><?= $d->email ?></td>
         <td><?= $d->unidad ?></td>
         <td><?= $d->descripcion ?></td>

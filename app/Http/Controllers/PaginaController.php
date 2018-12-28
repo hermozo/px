@@ -17,7 +17,6 @@ class PaginaController extends Controller {
       $this->middleware('auth');
       } */
 
-
     public function querysql($id) {
         return DB::select('select * from pagina WHERE idpagina = :id  ', ['id' => $id]);
     }
@@ -46,7 +45,18 @@ class PaginaController extends Controller {
 
     public function index() {
         $menu = [];
-        $data = DB::select('select * from pagina where idpagina IS NULL ORDER BY id ASC ', []);
+        $data = DB::select('select * from pagina where idpagina IS NULL AND tipo IS NULL ORDER BY id ASC ', []);
+        $pagext = DB::select('select * from pagina where tipo = 1 ORDER BY id ASC', []);
+
+        $htmlextra = '<ol class="list-group">';
+        foreach ($pagext as $v) {
+            $htmlextra .= '<li class="list-group-item list-group-item-info">'
+                    . ' <i class="fa fa-play text-danger" aria-hidden="true"></i> ' . $v->titulo . ' '
+                    . ' <a class="btn btn-success btn-xs badge" href="' . url('pagina', ['id' => $v->id]) . '"> Contenido <i class="fa fa-play" aria-hidden="true"></i></a>' . $this->bus($v->id) . ''
+                    . ' </li>';
+        }
+        $htmlextra .= '</ol>';
+
         $html = '<ol class="list-group">';
         foreach ($data as $v) {
             $data = [];
@@ -63,6 +73,7 @@ class PaginaController extends Controller {
             'paginas' => $data,
             //'menu' => $menu,
             'html' => $html,
+            'pagext' => $htmlextra
         ]);
     }
 

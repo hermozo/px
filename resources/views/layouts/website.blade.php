@@ -1,9 +1,10 @@
 <?php
 
 use App\Website;
-$url=null;
-if(isset($u))
-    $url=$u;
+
+$url = null;
+if (isset($u))
+    $url = $u;
 $menu = new Website();
 $listMenuBase = $menu->getMenuBase($url);
 //print $url;
@@ -14,18 +15,12 @@ $listMenuBase = $menu->getMenuBase($url);
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-        <!-- Bootstrap CSS -->
-        <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">-->
         <link href="{{ asset('bt/css/bootstrap.css') }}" rel="stylesheet">
-        <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">-->
         <link href="{{ asset('fa-icon/css/all.css') }}" rel="stylesheet">
-
         <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <!--<title>{{ config('app.name', 'Laravel') }}</title>-->
-        <title>{{ config('app.name', 'Procuraduría') }} - @yield('title')</title>
-
+        <!--title>{{ config('app.name', 'Procuraduría') }} - @yield('title')</title-->
+        <title>Procuraduría de el estado</title>
         <link href="{{ asset('css/menu.css') }}" rel="stylesheet">
     </head>
     <body>
@@ -37,11 +32,11 @@ $listMenuBase = $menu->getMenuBase($url);
                     </div>
                     <div class="col-md-4 col-xs-8 logo">
                         <a href="{{ url('/') }}">
-                            <img src="{{ asset('img/logo_bol1.png') }}" width="250px">
+                            <img src="{{ asset('img/logo_bol1.png') }}" width="320px">
                         </a>
                     </div>
                     <div class="col-md-4 col-xs-2 search">
-                    	<button type="button"><i class="fas fa-search"></i></button>
+                        <button type="button"><i class="fas fa-search"></i></button>
                         <form >
                             <input type="text" name="search" class="textfield" placeholder="Buscar..."/>
                             <button type="button"><i class="fas fa-search"></i></button>
@@ -58,13 +53,14 @@ $listMenuBase = $menu->getMenuBase($url);
                 <div id="dismiss">
                     <i class="fas fa-times"></i>
                 </div>
-    
+
                 <div class="sidebar-header">
                     <!--<h3>Bootstrap Sidebar</h3>-->
                 </div>
                 <br/>
-    
+
                 <ul class="menu_list">
+                    <li><a href="{{URL::to("/")}}">Inicio</a></li>
                     <?php
                     foreach ($listMenuBase as $key => $m) {
                         $sHtml = $menu->getChildHtml($m->id, $url);
@@ -81,7 +77,7 @@ $listMenuBase = $menu->getMenuBase($url);
 
             <!-- Page Content -->
             <div id="content">
-            	@yield('content')
+                @yield('content')
                 <!--<div class="container-fluid">
                 </div>-->
             </div>
@@ -93,12 +89,13 @@ $listMenuBase = $menu->getMenuBase($url);
                     <div class="col-md-4 col-xs-4 enlaces">
                         <h3>ENLACES RÁPIDOS</h3>
                         <ul class="fa-ul">
-                            <li><span class="fa-li" ><i class="fas fa-angle-right"></i></span> <a href="#">SERVICIOS</a></li>
-                            <li><span class="fa-li" ><i class="fas fa-angle-right"></i></span> <a href="#">CASOS</a></li>
                             <li><span class="fa-li" ><i class="fas fa-angle-right"></i></span> <a href="#">NOTICIAS</a></li>
-                            <li><span class="fa-li" ><i class="fas fa-angle-right"></i></span> <a href="#">CONTACTOS</a></li>
-                            <li><span class="fa-li" ><i class="fas fa-angle-right"></i></span> <a href="#">MAPA</a></li>
+                            <li><span class="fa-li" ><i class="fas fa-angle-right"></i></span> <a href="#">CASOS</a></li>
+                            <li><span class="fa-li" ><i class="fas fa-angle-right"></i></span> <a href="#">COMUNICADOS</a></li>
                             <li><span class="fa-li" ><i class="fas fa-angle-right"></i></span> <span id="btn_faq">PREGUNTAS FRECUENTES</span></li>
+                            <li><span class="fa-li" ><i class="fas fa-angle-right"></i></span> <a href="#">GALERIA DE IMAGENES</a></li>
+                            <li><span class="fa-li" ><i class="fas fa-angle-right"></i></span> <a href="#">TUTORIALES Y VIDEOS</a></li>
+
                         </ul>
                     </div>
                     <div class="col-md-4 col-xs-8 contact_info">
@@ -109,40 +106,54 @@ $listMenuBase = $menu->getMenuBase($url);
                             <li><span class="fa-li" ><i class="fas fa-phone-volume"></i></span> +591 (02) 214 8267 - Oficina.</li>
                             <li><span class="fa-li" ><i class="fas fa-envelope"></i></span> info@pge.gob.bo</li>
                         </ul>
+                        <p class="text-center">
+                            <a href="{{URL::to("direccionessite")}}">
+                                <img src="{{ asset('images/mapa.jpg') }}" class="img-thumbnail" style="width:250px"/>
+
+                            </a>
+                            <br/>
+                            Direcciones departamentales
+                        </p>
+
+
                     </div>
                     <div class="col-md-4 col-xs-12 rrss">
-                    	<div class="row">
-                    		<div class="col-md-12 col-xs-9">
-                    			<h3>REDES SOCIALES</h3>
-                            	<ul>
+                        <div class="row">
+                            <div class="col-md-12 col-xs-9">
+                                <h3>REDES SOCIALES</h3>
+                                <ul>
                                     <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                                     <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                                     <li><a href="#"><i class="fab fa-youtube"></i></a></li>
                                 </ul>
-                    		</div>
-                    		<div class="col-md-12 col-xs-3">
-                    			<p><a href="#"><i class="fas fa-book"></i></a></p>
-                    		</div>
-                    	</div>                        
+                            </div>
+                            <div class="col-md-12 col-xs-12"> 
+                                <a href="{{URL::to('vibliotecavirtual')}}"> <img src="{{ asset('images/virtual.png') }}" class="img-thumbnail img-responsive"> </a> 
+                            </div>
+                        </div>    
+
+                        <div class="row">
+                            <div class="col-md-6 col-xs-6">
+                                <br/>
+                                <a href="http://rae.procuraduria.gob.bo/" target="_blank"> <img src="{{ asset('images/raelogo.jpg') }}" class="img-thumbnail img-responsive"> </a> 
+                            </div>
+                            <div class="col-md-6 col-xs-6">
+                                <br/>
+                                <a href="https://rope.procuraduria.gob.bo/" target="_blank"> <img src="{{ asset('images/ropelogo.jpg') }}" class="img-thumbnail img-responsive"> </a> 
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <br/>
+            <br/>
+            <br/>
         </footer>
-
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <!--<script src="https://code.jquery.com/jquery-3.0.0.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>-->
-
         <script src="{{ asset('assets/d3.v3.min.js') }}" defer></script>
         <script src="{{ asset('assets/dashtimer.js') }}" defer></script>
-
-
         <script src="{{ asset('js/jquery1.12.4.js') }}" defer></script>
         <!--<script src="{{ asset('js/popper.min.js') }}" defer></script>-->
         <script src="{{ asset('bt/js/bootstrap.min.js') }}" defer></script>
-        
         <script src="{{ asset('js/bxSlider.js') }}" defer></script>
         <script src="{{ asset('js/website.js') }}" defer></script> 
 
