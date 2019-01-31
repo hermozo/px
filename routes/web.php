@@ -17,17 +17,22 @@ Route::get('/', function () {
     $noticias = $ws->getContents('noticia');
     $casos = $ws->getContents('casos');
     $comunicados = $ws->getContents('comunicado');
-    /*     * *MIGUEL* */
     $organizacion = $ws->getSiteContent(427);
     $pasantias = $ws->getSiteContent(428);
     $reportaje = $ws->getSiteContent(429);
-    return view('website.index', compact('slides', 'noticias', 'casos', 'comunicados', 'organizacion', 'pasantias', 'reportaje'));
+    $revistas = $ws->getRevistar();
+    $infofrafia = $ws->getInfofrafia();
+    $biblio = $ws->getSiteContent(430);
+    return view('website.index', compact('slides', 'noticias', 'casos', 'comunicados', 'organizacion', 'pasantias', 'reportaje', 'revistas', 'infofrafia', 'biblio'));
 });
 
 
 Route::get("direccionessite", function() {
     return view('website.direccionessite');
 });
+
+
+
 Route::get("vibliotecavirtual", function() {
     $ws = new \App\Website();
     $virtual = $ws->getSiteContent(430);
@@ -35,6 +40,7 @@ Route::get("vibliotecavirtual", function() {
 });
 
 Route::get('sitioweb', 'SitiowebsiteController@index');
+Route::resource('formulario', 'FormularioController');
 
 /* PAGINA */
 Route::resource('informacion', 'InformacionController');
@@ -42,16 +48,19 @@ Route::resource('galeria', 'GaleriaController');
 Route::resource('multimedia', 'MultimediaController');
 Route::resource('slider', 'SliderController');
 Route::resource('pagina', 'PaginaController');
+Route::resource('contenido', 'ContenidoController');
 Route::resource('informaciones', 'InformacionesController');
 Route::resource('direcciones', 'DireccionesController');
 Route::resource('infografia', 'InfografiaController');
 Route::resource('galery', 'GaleryController');
 Route::resource('servidores', 'ServidoresController');
 Route::resource('uploadservidor', 'UploadController');
-
-
-
-
+Route::resource('uploadtugare', 'UploadtugareController');
+Route::resource('ordenafotos', 'OrdenafotosController');
+Route::resource('graficos', 'GraficosController');
+Route::resource('slidevideo', 'SlidevideoController');
+Route::resource('consultas', 'ConsultasController');
+Route::resource('menupx', 'MenuController');
 
 /* LOGIN */
 //Auth::routes();
@@ -74,3 +83,10 @@ Route::get('detail/{id}', 'WebsiteController@detail');
 Route::get('faq', 'WebsiteController@faq');
 Route::get('noticias', 'WebsiteController@noticias');
 Route::get('comunicados', 'WebsiteController@comunicados');
+Route::get('casos', 'WebsiteController@casos');
+Route::get('contactos', 'WebsiteController@direcciones');
+Route::get('galeria-fotos/{id?}', 'WebsiteController@galeria');
+Route::get('videos-tutoriales/{id?}', 'WebsiteController@videos');
+Route::post('search', 'WebsiteController@search');
+Route::get('libroflip', 'WebsiteController@libro');
+Route::get('masrevistas', 'WebsiteController@masrevistas');

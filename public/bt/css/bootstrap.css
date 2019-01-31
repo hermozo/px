@@ -1594,12 +1594,12 @@ pre code {
 }
 @media (min-width: 992px) {
   .container {
-    width: 970px;
+    width: 750px;
   }
 }
 @media (min-width: 1200px) {
   .container {
-    width: 1170px;
+    width: 970px;
   }
 }
 .container-fluid {
@@ -3008,7 +3008,7 @@ select[multiple].input-lg {
   font-weight: normal;
   line-height: 1.42857143;
   text-align: center;
-  white-space: nowrap;
+      white-space: normal !important;
   vertical-align: middle;
   -ms-touch-action: manipulation;
       touch-action: manipulation;

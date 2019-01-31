@@ -7,18 +7,110 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>Admin</title> 
+        <title>Administrador procuraduria</title>
         <link href="{{ URL::to('admin/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet"/>
         <link href="{{ URL::to('admin/vendor/metisMenu/metisMenu.min.css') }}" rel="stylesheet"/>
         <link href="{{ URL::to('admin/dist/css/sb-admin-2.css') }}" rel="stylesheet"/>
         <link href="{{ URL::to('admin/vendor/morrisjs/morris.css') }}" rel="stylesheet"/>
         <link href="{{ URL::to('assets/jquery-ui/jquery-ui.min.css') }}" rel="stylesheet"/>
         <link href="{{ URL::to('admin/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css"/>
+
+
+        <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+
+
+        <style>
+            .navbar-default {
+                background-color: #0a527e;
+                border-color: #2881b8;
+            }
+            .navbar-default .navbar-brand {
+                color: #94999a;
+            }
+            .navbar-default .navbar-brand:hover,
+            .navbar-default .navbar-brand:focus {
+                color: #ffffff;
+            }
+            .navbar-default .navbar-text {
+                color: #94999a;
+            }
+            .navbar-default .navbar-nav > li > a {
+                color: #94999a;
+            }
+            .navbar-default .navbar-nav > li > a:hover,
+            .navbar-default .navbar-nav > li > a:focus {
+                color: #ffffff;
+            }
+            .navbar-default .navbar-nav > .active > a,
+            .navbar-default .navbar-nav > .active > a:hover,
+            .navbar-default .navbar-nav > .active > a:focus {
+                color: #ffffff;
+                background-color: #2881b8;
+            }
+            .navbar-default .navbar-nav > .open > a,
+            .navbar-default .navbar-nav > .open > a:hover,
+            .navbar-default .navbar-nav > .open > a:focus {
+                color: #ffffff;
+                background-color: #2881b8;
+            }
+            .navbar-default .navbar-toggle {
+                border-color: #2881b8;
+            }
+            .navbar-default .navbar-toggle:hover,
+            .navbar-default .navbar-toggle:focus {
+                background-color: #2881b8;
+            }
+            .navbar-default .navbar-toggle .icon-bar {
+                background-color: #94999a;
+            }
+            .navbar-default .navbar-collapse,
+            .navbar-default .navbar-form {
+                border-color: #94999a;
+            }
+            .navbar-default .navbar-link {
+                color: #94999a;
+            }
+            .navbar-default .navbar-link:hover {
+                color: #ffffff;
+            }
+
+            @media (max-width: 767px) {
+                .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+                    color: #94999a;
+                }
+                .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+                .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+                    color: #ffffff;
+                }
+                .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+                .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+                .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+                    color: #ffffff;
+                    background-color: #2881b8;
+                }
+            }
+        </style>
     </head>
     <body>
         <div id="wrapper">
             <!-- Navigation -->
-            <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0;">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="sr-only">Navegacóin</span>
@@ -26,7 +118,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">Procuradoria</a>
+                    <a class="navbar-brand" href="{{ url('sitioweb') }}" > <img src="{{ URL::to('images/proculogo2.png') }}" style="width: 80px"></a>
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
                     <!-- Authentication Links -->
@@ -41,10 +133,9 @@
                     </li>
                     @else
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a style="color:#fff" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             Sesión {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
-
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
@@ -66,55 +157,55 @@
                     <div class="sidebar-nav navbar-collapse">
                         <ul class="nav" id="side-menu">
                             <li>
-                                <a href="{{ url('sitioweb') }}"><i class="fa fa-cogs" aria-hidden="true"></i> Pagina </a>
+                                <a href="{{ url('sitioweb') }}" style="color:#999"><i class="fa fa-home" aria-hidden="true"></i> Inicio </a>
                             </li>
                             <li>
-                                <a href="{{ url('pagina') }}"><i class="fa fa-chrome" aria-hidden="true"></i> Paginas Sitio Web</a>
+                                <a href="{{ url('pagina') }}" style="color:#999"><i class="fa fa-chrome" aria-hidden="true"></i> Páginas Sitio Web</a>
                             </li>
                             <!--li>
                                 <a href="{{ url('multimedia',['id'=>'1']) }}"><i class="fa fa-picture-o" aria-hidden="true"></i> Galería </a>
                             </li-->
-
                             <li>
-                                <a href="{{ url('multimedia',['id'=>'2']) }}"><i class="fa fa-fast-forward" aria-hidden="true"></i> Sliders </a>
+                                <a href="{{ url('infografia') }}" style="color:#999"><i class="fa fa-pie-chart" aria-hidden="true"></i> Infografías  </a>
+                            </li>
+                            <li>
+                                <a href="{{ url('multimedia',['id'=>'2']) }}" style="color:#999"><i class="fa fa-fast-forward" aria-hidden="true"></i> Sliders </a>
                             </li>
 
                             <li>
-                                <a href="{{ url('informaciones',['tipo'=>'noticia']) }}"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Noticias</a>
+                                <a href="{{ url('informaciones',['tipo'=>'noticia']) }}" style="color:#999"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Noticias</a>
                             </li>
                             <li>
-                                <a href="{{ url('informaciones',['tipo'=>'comunicado']) }}"><i class="fa fa-file-text-o" aria-hidden="true"></i> Comunicados</a>
-                            </li>
-                            <li> 
-                                <a href="{{ url('infografia') }}"><i class="fa fa-pie-chart" aria-hidden="true"></i> Infografias * </a>
-                            </li>
-                            <li>
-                                <a href="{{ url('informaciones',['tipo'=>'casos']) }}"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Casos</a>
+                                <a href="{{ url('informaciones',['tipo'=>'comunicado']) }}" style="color:#999"><i class="fa fa-file-text-o" aria-hidden="true"></i> Comunicados</a>
                             </li>
 
                             <li>
-                                <a href="{{ url('direcciones') }}"><i class="fa fa-map-marker" aria-hidden="true"></i> Direcciones </a>
+                                <a href="{{ url('informaciones',['tipo'=>'casos']) }}" style="color:#999"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Casos</a>
+                            </li>
+
+                            <li>
+                                <a href="{{ url('direcciones') }}" style="color:#999"><i class="fa fa-map-marker" aria-hidden="true"></i> Direcciones </a>
                             </li>
                             <li>
-                                <a href="{{ url('galery/1') }}"><i class="fa fa-file-video-o" aria-hidden="true"></i> Tutoriales y videos  </a> 
+                                <a href="{{ url('galery/1') }}" style="color:#999"><i class="fa fa-file-video-o" aria-hidden="true"></i> Tutoriales y videos  </a>
                             </li>
                             <li>
-                                <a href="{{ url('galery/2') }}"><i class="fa fa-picture-o" aria-hidden="true"></i> Galería de imagenes WEB  </a>
-                            </li> 
-                            <li>
-                                <a href="{{ url('galery/3') }}"><i class="fa fa-th-list" aria-hidden="true"></i> Revistas </a>
+                                <a href="{{ url('galery/2') }}" style="color:#999"><i class="fa fa-picture-o" aria-hidden="true"></i> Galería de imagenes</a>
                             </li>
+                            <li>
+                                <a href="{{ url('galery/3') }}" style="color:#999"><i class="fa fa-th-list" aria-hidden="true"></i> Revistas </a>
+                            </li>
+                            <li>
+                                <a href="{{ url('consultas') }}" style="color:#999"><i class="fa fa-list-ol" aria-hidden="true"></i> Quejas y Reclamos   </a>
+                            </li>
+
+
                             <!--li>
                                 <a href="#"><i class="fa fa-users" aria-hidden="true"></i> Unidades de la institución  </a>
-                            </li> 
-
+                            </li>
                             <li>
                                 <a href="{{ url('servidores') }}"><i class="fa fa-users" aria-hidden="true"></i> Servidores de la institución </a>
                             </li>
-
-
-                          
-
                             <li>
                                 <a href="#"><i class="fa fa-th-list" aria-hidden="true"></i> Preguntas frecuentes * </a>
                             </li-->
@@ -126,7 +217,7 @@
 
 
             <div id="urlPath" name="{{ URL::to('/') }}"></div>
-
+            <span id="TAMANIO" name="<?= parse_size(ini_get('upload_max_filesize')); ?>"></span>
 
 
             <div id="page-wrapper">
@@ -144,10 +235,6 @@
         <script src="{{ URL::to('admin/vendor/morrisjs/morris.min.js') }}"></script>
         <script src="{{ URL::to('admin/dist/js/sb-admin-2.js') }}"></script>
         <script src="{{ URL::to('assets/jquery-ui/jquery-ui.min.js') }}"></script>
-
-        <script src="{{ asset('assets/d3.v3.min.js') }}" defer></script>
-        <script src="{{ asset('assets/dashtimer.js') }}" defer></script>
-
         <script src="{{ URL::to('assets/notify.js') }}"></script>
         <script src="{{ URL::to('js/pagina.js') }}"></script>
         <script src="{{ URL::to('js/Informaciones.js') }}"></script>
@@ -155,7 +242,9 @@
         <script src="{{ URL::to('js/Direcciones.js') }}"></script>
         <script src="{{ URL::to('js/Galery.js') }}"></script>
         <script src="{{ URL::to('js/Servidores.js') }}"></script>
-
+        <script src="{{ URL::to('js/uploadservidor.js') }}"></script>
+        <script src="{{ URL::to('js/Infografias.js') }}"></script>
+        <script src="{{ URL::to('js/Graficos.js') }}"></script>
         <?php
 
         function parse_size($size) {
@@ -213,71 +302,63 @@
                                        new Direcciones();
                                        new Galery();
                                        new Servidores();
-
-
+                                       new Uploadservidor();
+                                       new Infografias();
+                                       new Graficos();
                                        /********************/
-
-
-
-
-                                       $("#sortable").sortable();
-                                       $("#sortable").disableSelection();
-
-
-                                       /********************/
-                                       var dt = new DashTimer('#timer').init({
-                                           start: {
-                                               fill: 'green',
-                                               innerRatio: .9,
-                                               outerRatio: 1
-                                           },
-                                           finish: {
-                                               fill: 'red',
-                                               innerRatio: .3,
-                                               outerRatio: 1
-                                           },
-                                           values: {
-                                               show: true,
-                                               decorate: function (d) {
-                                                   return Math.floor(d / 10) * 10;
-                                               },
-                                               classes: "mui--text-light-secondary mui--text-caption"
-                                           }
-                                       }).setData([{
-                                               immediate: {
-                                                   angle: true
-                                               },
-                                               start: {
-                                                   angle: 1,
-                                                   fill: '#eee'
-                                               },
-                                               finish: {
-                                                   angle: 0,
-                                                   fill: '#eee'
-                                               }
-                                           }, {
-                                               values: {
-                                                   show: true
-                                               }
-                                           }]).start(1000, 0, .90);
-                                       /********************/
-
                                        var tamanio = <?= parse_size(ini_get('upload_max_filesize')); ?>;
-                                       //$('input[type=file]').change(function () {
                                        $('#archivosSubir').change(function () {
                                            imagenes = [];
                                            iterador = 0;
                                            subidos = '';
                                            negados = '';
                                            for (var i = 0; i < this.files.length; i++) {
-                                               if (this.files[i].size <= parseInt(tamanio)) {
-                                                   imagenes.push(this.files[i]);
+                                               var file_data = this.files[i];
+                                               var imgattr = file_data.name.split('.');
+                                               if (imgattr[(imgattr.length - 1)] == 'jpg' || imgattr[(imgattr.length - 1)] == 'png') {
+                                                   if (file_data.size <= parseInt(tamanio)) {
+                                                       imagenes.push(file_data);
+                                                   } else {
+                                                       negados += '<li class="list-group-item"> Supero el peso permitido => ' + file_data.name + '</li>';
+                                                   }
                                                } else {
-                                                   negados += '<li class="list-group-item">' + this.files[i].name + '</li>';
+                                                   negados += '<li class="list-group-item"> Archivo no valido => ' + file_data.name + '</li>';
                                                }
                                            }
                                            $("#negados").html(negados);
                                            listado();
+                                       })
+
+
+                                       $("#videoregister").click(function () {
+                                           var datav = {
+                                               nombre: $("#videonombre").val(),
+                                               texto: $("#videodescripcion").val(),
+                                               _token: $("input[name='_token']").val(),
+                                           }
+                                           fetch('{{ URL::to("/slidevideo") }}', {
+                                               method: 'POST',
+                                               body: $.param(datav),
+                                               headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                                           }).then((res) => {
+                                               return res.json()
+                                           }).catch((error) => {
+                                               console.log(error);
+                                               $.notify("Complete el formulario", "error");
+                                           }).then((response) => {
+                                               if (response == 1) {
+                                                   $.notify('Registrado correctamente.', "success");
+                                                   setTimeout(() => {
+                                                       location.reload();
+                                                   }, 500)
+                                               } else {
+                                                   for (let e of response.errors) {
+                                                       $.notify(e, "error");
+                                                   }
+                                               }
+                                           });
+
+
                                        })
                                    });
         </script>

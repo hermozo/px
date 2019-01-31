@@ -69,7 +69,11 @@ class InformacionesController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($data) {
-        $datax = DB::table('informaciones')->select(['*'])->where('tipo', "$data")->paginate(10);
+        $datax = DB::table('informaciones')
+                ->select(['*'])
+                ->orderBy('id', 'desc')
+                ->where('tipo', "$data")
+                ->paginate(10);
         return view('informaciones/view', ['data' => $data, 'datax' => $datax]);
     }
 

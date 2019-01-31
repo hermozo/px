@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 <br/>
-<button  type="button"  data-toggle="modal" data-target="#myModal" class="btn btn-default" id="nuevaDireccion">Crear nuevo</button>
+<button  type="button"  data-toggle="modal" data-target="#myModal" class="btn btn-default" id="nuevaDireccion">Crear nueva dirección</button>
 <br/>
 <br/>
 
@@ -17,7 +17,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">NO</button>
-                <button type="button" class="btn btn-danger" id="eliminar-direccion-btn">OK</button>
+                <button type="button" class="btn btn-danger" id="eliminar-direccion-btn">SI</button>
             </div>
         </div>
     </div>
@@ -25,7 +25,7 @@
 
 
 <table class="table table-striped table-hover">
-    <tr> 
+    <tr>
         <td><b> </b></td>
         <td><b>Dirección </b></td>
         <td><b>Latitud </b></td>
@@ -34,8 +34,8 @@
         <td><b>Pitch </b></td>
     </tr>
     @foreach ($data as $d)
-    <tr> 
-        <td style="width: 150px"> 
+    <tr>
+        <td style="width: 150px">
             <p>
                 <button type="button" class="btn btn-default btn-xs btn-edit-direcciones" data-id="{{ $d->id }}"><i class="fa fa-edit" aria-hidden="true"></i>  Editar</button>
                 <button type="button" class="btn btn-danger btn-xs eliminar-direccion" data-id="{{ $d->id }}">
@@ -81,13 +81,13 @@
                     <div class="form-group">
                         <label for="form-cabecera" class="col-sm-2 control-label">Cabecera</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="form-cabecera">
+                            <input type="text" class="form-control" value="34" id="form-cabecera">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="form-punto" class="col-sm-2 control-label">Punto</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="form-punto">
+                            <input type="text" class="form-control" value="10" id="form-punto">
                         </div>
                     </div>
                     <div class="form-group">

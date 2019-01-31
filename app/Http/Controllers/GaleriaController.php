@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Multimedia;
 use Illuminate\Http\Request;
 use DB;
+use App\Galery;
 
 class GaleriaController extends Controller {
 
@@ -45,7 +46,7 @@ class GaleriaController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        //
+        return Galery::find($id);
     }
 
     /**

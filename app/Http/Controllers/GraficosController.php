@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Graficos;
 use Illuminate\Http\Request;
+use DB;
 
 class GraficosController extends Controller {
 
@@ -32,7 +33,24 @@ class GraficosController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-        //
+        $rules = Graficos::roles();
+        try {
+            $validator = \Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                return [
+                    'created' => false,
+                    'errors' => $validator->errors()->all()
+                ];
+            }
+            $model = new Graficos();
+            $model->nombre = $request->nombre;
+            $model->descripcion = $request->descripcion;
+            $model->porcentaje = $request->porcentaje;
+            $model->id_infografia = $request->id_infografia;
+            return ($model->save() == 1) ? 1 : 0;
+        } catch (\Exception $e) {
+            return $e;
+        }
     }
 
     /**
@@ -41,8 +59,9 @@ class GraficosController extends Controller {
      * @param  \App\Graficos  $graficos
      * @return \Illuminate\Http\Response
      */
-    public function show(Graficos $graficos) {
-        //
+    public function show($id) {
+        $datax = DB::table('graficos')->select(['*'])->where('id_infografia', $id)->paginate(10);
+        return view('graficos.view', ['data' => \App\Infografia::find($id), 'datax' => $datax]);
     }
 
     /**
@@ -72,8 +91,8 @@ class GraficosController extends Controller {
      * @param  \App\Graficos  $graficos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Graficos $graficos) {
-        //
+    public function destroy($id) {
+        return Graficos::destroy($id);
     }
 
 }

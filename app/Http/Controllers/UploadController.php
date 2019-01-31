@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Multimedia;
+use DB;
+use Session;
 
 class UploadController extends Controller {
 
+ /*   public function __construct() {
+        $this->middleware('auth');
+    }
+*/
     /**
      * Display a listing of the resource.
      *
@@ -32,6 +38,7 @@ class UploadController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
+        $ret = [];
         $output_dir = "images/";
         if (isset($_FILES["file"])) {
             $ret = [];
@@ -44,6 +51,8 @@ class UploadController extends Controller {
                 $ret['archivo'] = $fileName;
             }
             return json_encode($ret);
+        } else {
+            return $ret;
         }
     }
 
@@ -54,17 +63,9 @@ class UploadController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-
-        $model = new Multimedia();
-        $model->tipo = 'galery';
-        $model->nombre = 'IMagen';
-        $model->texto = 'Texto';
-        $model->slide = NULL;
-        $model->idgalery = NULL;
-        $model->orden = 1;
-        $model->save();
-
-        return view('uploadservidor/view');
+        $sql = "select * from multimedia where idgalery = :id order by orden ASC";
+        $data = DB::select($sql, ['id' => $id]);
+        return view('uploadservidor/view', ['id' => $id, 'imagenes' => $data]);
     }
 
     /**

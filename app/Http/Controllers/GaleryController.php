@@ -71,7 +71,7 @@ class GaleryController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit(Galery $galery) {
-        //
+        
     }
 
     /**
@@ -81,8 +81,24 @@ class GaleryController extends Controller {
      * @param  \App\Galery  $galery
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Galery $galery) {
-        //
+    public function update($id, Request $request) {
+        $rules = Galery::roles();
+        try {
+            $validator = \Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                return [
+                    'created' => false,
+                    'errors' => $validator->errors()->all()
+                ];
+            }
+            $model = Galery::find($id);
+            $model->nombre = $request->nombre;
+            $model->descripcion = $request->descripcion;
+            $model->tipo = $request->tipo;
+            return ($model->save() == 1) ? 1 : 0;
+        } catch (\Exception $e) {
+            return $e;
+        }
     }
 
     /**

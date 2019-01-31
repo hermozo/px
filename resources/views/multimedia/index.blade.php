@@ -10,7 +10,8 @@
 
 <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#home">Archivos</a></li>
-    <li><a data-toggle="tab" href="#menu1">Subir archivos</a></li>
+    <li><a data-toggle="tab" href="#menu1">Subir imágenes</a></li>
+    <li><a data-toggle="tab" href="#menu2">Videos</a></li>
 </ul>
 
 <div class="tab-content">
@@ -22,8 +23,8 @@
         <?php
         $ext = explode('.', $d->nombre);
 
-        switch ($ext[1]) {
-            case('png'):
+        switch ($d->tipo) {
+            case('galery'):
                 echo '<div class="img-thumbnail" id="multi-' . $d->id . '"><p> <div class="btn-group btn-eliminar-multimedia" data-id="' . $d->id . '" role="group">
                                 <button type="button" class="btn btn-danger btn-xs">Borrar</button>
                               </div> </p>'
@@ -31,59 +32,12 @@
                 . '<p class="text-center" style="font-size:8px">' . str_replace("-", " ", $d->texto) . '<p>'
                 . '</div>';
                 break;
-            case('jpg'):
+
+            case('video'):
                 echo '<div class="img-thumbnail" id="multi-' . $d->id . '"><p> <div class="btn-group btn-eliminar-multimedia" data-id="' . $d->id . '" role="group">
                                 <button type="button" class="btn btn-danger btn-xs">Borrar</button>
                               </div> </p>'
-                . '<img src="' . URL::to('images/' . $d->nombre) . '" class="img-thumbnail" style="height:100px" title="' . $d->texto . '">'
-                . '<p class="text-center" style="font-size:8px">' . str_replace("-", " ", $d->texto) . '<p>'
-                . '</div>';
-                break;
-            case('jpeg'):
-                echo '<div class="img-thumbnail" id="multi-' . $d->id . '"><p> <div class="btn-group btn-eliminar-multimedia" data-id="' . $d->id . '" role="group">
-                                <button type="button" class="btn btn-danger btn-xs">Borrar</button>
-                              </div> </p>'
-                . '<img src="' . URL::to('images/' . $d->nombre) . '" class="img-thumbnail" style="height:100px" title="' . $d->texto . '">'
-                . '<p class="text-center" style="font-size:8px">' . str_replace("-", " ", $d->texto) . '<p>'
-                . '</div>';
-                break;
-            case('pdf'):
-                echo '<div class="img-thumbnail" id="multi-' . $d->id . '"><p> <div class="btn-group btn-eliminar-multimedia" data-id="' . $d->id . '" role="group">
-                                <button type="button" class="btn btn-danger btn-xs">Borrar</button>
-                              </div> </p>'
-                . '<a title="' . $d->texto . '" target="_blank" href="' . URL::to('images/' . $d->nombre) . '"><img src="' . URL::to('images/pdf.png') . '" class="img-thumbnail" style="height:100px"></a>'
-                . '<p class="text-center" style="font-size:8px">' . str_replace("-", " ", $d->texto) . '<p>'
-                . '</div>';
-                break;
-            case('docx'):
-                echo '<div class="img-thumbnail" id="multi-' . $d->id . '"><p> <div class="btn-group btn-eliminar-multimedia" data-id="' . $d->id . '" role="group">
-                                <button type="button" class="btn btn-danger btn-xs">Borrar</button>
-                              </div> </p>'
-                . '<a title="' . $d->texto . '" target="_blank" href="' . URL::to('images/' . $d->nombre) . '"><img src="' . URL::to('images/docx.png') . '" class="img-thumbnail" style="height:100px"></a>'
-                . '<p class="text-center" style="font-size:8px">' . str_replace("-", " ", $d->texto) . '<p>'
-                . '</div>';
-                break;
-            case('doc'):
-                echo '<div class="img-thumbnail" id="multi-' . $d->id . '"><p> <div class="btn-group btn-eliminar-multimedia" data-id="' . $d->id . '" role="group">
-                                <button type="button" class="btn btn-danger btn-xs">Borrar</button>
-                              </div> </p>'
-                . '<a title="' . $d->texto . '" target="_blank" href="' . URL::to('images/' . $d->nombre) . '"><img src="' . URL::to('images/docx.png') . '" class="img-thumbnail" style="height:100px"></a>'
-                . '<p class="text-center" style="font-size:8px">' . str_replace("-", " ", $d->texto) . '<p>'
-                . '</div>';
-                break;
-            case('xlsx'):
-                echo '<div class="img-thumbnail" id="multi-' . $d->id . '"><p> <div class="btn-group btn-eliminar-multimedia" data-id="' . $d->id . '" role="group">
-                                <button type="button" class="btn btn-danger btn-xs">Borrar</button>
-                              </div> </p>'
-                . '<a title="' . $d->texto . '" target="_blank" href="' . URL::to('images/' . $d->nombre) . '"><img src="' . URL::to('images/excel.png') . '" class="img-thumbnail" style="height:100px"></a>'
-                . '<p class="text-center" style="font-size:8px">' . str_replace("-", " ", $d->texto) . '<p>'
-                . '</div>';
-                break;
-            case('csv'):
-                echo '<div class="img-thumbnail" id="multi-' . $d->id . '"><p> <div class="btn-group btn-eliminar-multimedia" data-id="' . $d->id . '" role="group">
-                                <button type="button" class="btn btn-danger btn-xs">Borrar</button>
-                              </div> </p>'
-                . '<a title="' . $d->texto . '" target="_blank" href="' . URL::to('images/' . $d->nombre) . '"><img src="' . URL::to('images/excel.png') . '" class="img-thumbnail" style="height:100px"></a>'
+                . ' <p><a href="https://www.youtube.com/watch?v=' . $d->nombre . '" target="_blank"><img src="' . URL::to('img/videos.png') . '"  style="height:100px"></a></P>  '
                 . '<p class="text-center" style="font-size:8px">' . str_replace("-", " ", $d->texto) . '<p>'
                 . '</div>';
                 break;
@@ -107,7 +61,7 @@
                 <form method='post' action='' class="btn-file" enctype='multipart/form-data'>
                     <label for="file" class="eleccionpaparapa">Subir <?= $t; ?></label>
                     <input id="archivosSubir" type="file" name="file[]" id="file" multiple>
-                </form>   
+                </form>
             </center>
             <div class="container">
                 <div class="row">
@@ -123,9 +77,36 @@
             </div>
         </div>
     </div>
+
+    <div id="menu2" class="tab-pane fade">
+        <h1>Video de YouTube</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <form class="form-horizontal">
+                    {{ csrf_field() }}
+                    <div class="form-group">
+                        <label for="videonombre" class="col-sm-2 control-label">Link del video Youtube</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="videonombre" id="videonombre" placeholder="vtTUKLE_SWE">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="videodescripcion" class="col-sm-2 control-label">Descripción</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="videodescripcion" id="videodescripcion" placeholder="Video de presentación">
+                        </div>
+                    </div>
+                </form>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="button" id="videoregister" class="btn btn-default">Registrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
-
 
 
 <div class="modal fade bs-eliminarinformaciones-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
@@ -140,7 +121,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">NO</button>
-                <button type="button" class="btn btn-danger" id="eliminar-galeria-btn">OK</button>
+                <button type="button" class="btn btn-danger" id="eliminar-galeria-btn">SI</button>
             </div>
         </div>
     </div>

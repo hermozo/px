@@ -13,9 +13,9 @@ class PaginaController extends Controller {
     public $i = "";
     public $items = [];
 
-    /* public function __construct() {
-      $this->middleware('auth');
-      } */
+    public function __construct() {
+        $this->middleware('auth');
+    }
 
     public function querysql($id) {
         return DB::select('select * from pagina WHERE idpagina = :id  ', ['id' => $id]);

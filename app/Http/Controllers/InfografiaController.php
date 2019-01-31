@@ -7,13 +7,18 @@ use Illuminate\Http\Request;
 
 class InfografiaController extends Controller {
 
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        return view('infografia/index');
+        $data = Infografia::all();
+        return view('infografia/index', ['data' => $data]);
     }
 
     /**
@@ -32,7 +37,22 @@ class InfografiaController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-        //
+        $rules = Infografia::roles();
+        try {
+            $validator = \Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                return [
+                    'created' => false,
+                    'errors' => $validator->errors()->all()
+                ];
+            }
+            $model = new Infografia();
+            $model->nombre = $request->nombre;
+            $model->descripcion = $request->descripcion;
+            return ($model->save() == 1) ? 1 : 0;
+        } catch (\Exception $e) {
+            return $e;
+        }
     }
 
     /**
@@ -41,8 +61,8 @@ class InfografiaController extends Controller {
      * @param  \App\Infografia  $infografia
      * @return \Illuminate\Http\Response
      */
-    public function show(Infografia $infografia) {
-        //
+    public function show($id) {
+        return Infografia::find($id);
     }
 
     /**
@@ -62,8 +82,23 @@ class InfografiaController extends Controller {
      * @param  \App\Infografia  $infografia
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Infografia $infografia) {
-        //
+    public function update($id, Request $request) {
+        $rules = Infografia::roles();
+        try {
+            $validator = \Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                return [
+                    'created' => false,
+                    'errors' => $validator->errors()->all()
+                ];
+            }
+            $model = Infografia::find($id);
+            $model->nombre = $request->nombre;
+            $model->descripcion = $request->descripcion;
+            return ($model->save() == 1) ? 1 : 0;
+        } catch (\Exception $e) {
+            return $e;
+        }
     }
 
     /**
@@ -72,8 +107,8 @@ class InfografiaController extends Controller {
      * @param  \App\Infografia  $infografia
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Infografia $infografia) {
-        //
+    public function destroy($id) {
+        return Infografia::destroy($id);
     }
 
 }

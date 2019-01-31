@@ -6,6 +6,7 @@
     	<div class="col-md-12">
     	
     		<h3>Preguntas Frecuentes</h3>
+    		{!! $content->texto !!}
     	
     	</div>
     </div>

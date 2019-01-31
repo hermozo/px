@@ -1,25 +1,38 @@
 @extends('layouts.master')
 @section('content')
 <br/>
-<a href="{{ url('informacion/'.$data) }}" type="button" class="btn btn-default">Crear nuevo {{$data}}</a>
+<?php
+switch($data){
+	case('noticia'):
+	$texto = 'Crea nueva noticia';
+	break;
+	case('comunicado'):
+	$texto = 'Crea nuevo comunicado';
+	break;
+	case('casos'):
+	$texto = 'Crea nuevo caso';
+	break;
+}
+?>
+<a href="{{ url('informacion/'.$data) }}" type="button" class="btn btn-default">{{$texto}}</a>
 <legend></legend>
 <span id="url-informacion" name="{{ URL::to('informacion') }}" href="{{$data}}"></span>
 <div class="table-responsive">
 
     <table class="table table-striped table-bordered table-condensed">
         <tr>
-            <td style="width:140px"> 
+            <td style="width:140px">
 
             </td>
             <td style="width:100px"> Banner</td>
-            <td> Titulo</td>
-            <td> Descripcion</td>
+            <td> Título</td>
+            <td> Descripción</td>
             <td style="width:100px"> Fecha inicio</td>
             <td style="width:100px"> Fecha fin</td>
         </tr>
         @foreach ($datax as $dt)
         <tr>
-            <td> 
+            <td>
                 <p>
                     <a href="{{ url('informacion/'.$dt->id) }}" type="button" class="btn btn-default btn-xs"><i class="fa fa-edit" aria-hidden="true"></i> Editar</a>
                     <button type="button" class="btn btn-danger btn-xs eliminar-informacion" data-id="{{ $dt->id }}">
@@ -54,7 +67,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">NO</button>
-                <button type="button" class="btn btn-danger" id="eliminar-informacion-btn">OK</button>
+                <button type="button" class="btn btn-danger" id="eliminar-informacion-btn">SI</button>
             </div>
         </div>
     </div>

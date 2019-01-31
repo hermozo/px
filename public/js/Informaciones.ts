@@ -51,38 +51,46 @@ class Informaciones {
 
 
         $('#multiuniupload').change(function () {
+
+
             let imagenes = [];
             var iterador = 0;
             for (var i = 0; i < this.files.length; i++) {
                 console.log(this.files[i].name);
-
-
                 var file_data = this.files[i];
-                var form_data = new FormData();
-                form_data.append("_token", $('[name=_token]').val());
-                form_data.append('file', file_data);
-                form_data.append('tipo', '1');
-                $.ajax({
-                    url: $('#imgUploadnoticias').attr('name'),
-                    dataType: 'text',
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    data: form_data,
-                    type: 'POST',
-                }).done(function (data, textStatus, jqXHR) {
-                    let arc = JSON.parse(data);
-                    console.log(arc.archivo);
-                    $("#tipo-imagen").val(arc.archivo);
-                    $("#imgUploadChange").attr('src', $("#referenciaImagen").attr('name') + '/' + arc.archivo);
-                }).fail(function (jqXHR, textStatus, errorThrown) {
-                    console.log(jqXHR)
-                }).always(function (jqXHROrData, textStatus, jqXHROrErrorThrown) {
-                    console.log(textStatus)
-                });
+                let imgattr = file_data.name.split('.');
+                if (imgattr[(imgattr.length - 1)] == 'jpg' || imgattr[(imgattr.length - 1)] == 'png') {
+                    var file_data = this.files[i];
+                    var form_data = new FormData();
+                    form_data.append("_token", $('[name=_token]').val());
+                    form_data.append('file', file_data);
+                    form_data.append('tipo', '1');
+                    $.ajax({
+                        url: $('#imgUploadnoticias').attr('name'),
+                        dataType: 'text',
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        data: form_data,
+                        type: 'POST',
+                    }).done(function (data, textStatus, jqXHR) {
+                        let arc = JSON.parse(data);
+                        console.log(arc.archivo);
+                        $("#tipo-imagen").val(arc.archivo);
+                        $("#imgUploadChange").attr('src', $("#referenciaImagen").attr('name') + '/' + arc.archivo);
+                    }).fail(function (jqXHR, textStatus, errorThrown) {
+                        console.log(jqXHR)
+                    }).always(function (jqXHROrData, textStatus, jqXHROrErrorThrown) {
+                        console.log(textStatus)
+                    });
+                } else {
+                    $.notify(file_data.name + ' !No es admitido.', "error");
+                }
 
 
             }
+
+
         })
 
 

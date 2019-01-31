@@ -1,16 +1,17 @@
 @extends('layouts.master')
 @section('content')
-<h3>Estructura del menu.</h3>
-
-<button type="button" class="btn btn-default   btn-crear-categoria" data-id="NULL"><i class="fa fa-plus"  aria-hidden="true" title="Adicionar"></i> Agregar nuevo menu  </button> 
-
-<span id="url-pagina" name="{{ URL::to('api') }}"></span>
 
 
+
+<span id="url-pagina" name="{{ URL::to('/') }}"></span>
+
+<h3>Páginas Definidas</h3>
 <pre>
     <?= $pagext ?>
 </pre>
 
+<h3>Estructura del Menú</h3>
+<button type="button" class="btn btn-default   btn-crear-categoria" data-id="NULL"><i class="fa fa-plus"  aria-hidden="true" title="Adicionar"></i> Agregar nuevo menú  </button>
 
 <div class="jumbotron">
     <?= $html; ?>
@@ -27,7 +28,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">NO</button>
-                <button type="button" class="btn btn-danger" id="eliminarCategoria">OK</button>
+                <button type="button" class="btn btn-danger" id="eliminarCategoria">SI</button>
             </div>
         </div>
     </div>
@@ -40,7 +41,8 @@
                 <h4 class="modal-title" id="myModalLabel"></h4>
             </div>
             <div class="modal-body">
-                <label>Agregar menu</label>
+                {{ csrf_field() }}
+                <label>Agregar menú</label>
                 <input type="text" class="form-control" id="textCategoriMenu"/>
                 <label>Url</label>
                 <input type="text" class="form-control" id="textCategoriaDescripcion"/>

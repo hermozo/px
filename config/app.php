@@ -67,7 +67,7 @@ return [
       | to any of the locales which will be supported by the application.
       |
      */
-    'locale' => 'en',
+    'locale' => 'es',
     /*
       |--------------------------------------------------------------------------
       | Application Fallback Locale
@@ -196,5 +196,6 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+		'Html' => Collective\Html\HtmlFacade::class
     ],
 ];

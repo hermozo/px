@@ -49,18 +49,11 @@ class MultimediaController extends Controller {
                 $fileName = date('U') . '-' . uniqid() . decbin(rand(1, 999999)) . rand(1, 999999) . '.' . $extension;
                 move_uploaded_file($_FILES["file"]["tmp_name"], $output_dir . $fileName);
                 $ret['archivo'] = $fileName;
-                /*                 * */
-                $r = 0;
-                if (isset($_POST["tipo"])) {
-                    $r = 1;
-                } else {
-                    $r = Session::get('ID');
-                }
                 $model = new Multimedia();
-                $model->tipo = 'galery';//$_POST["tipo"];
+                $model->tipo = 'galery'; 
                 $model->nombre = $fileName;
                 $model->texto = $array[0];
-                $model->slide = $r;
+                $model->slide = 2;
                 $model->idgalery = NULL;
                 $model->orden = 1;
                 $model->save();

@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 class SitiowebsiteController extends Controller {
 
     //protected $layout = 'layouts.master';
+    public function __construct() {
+        $this->middleware('auth');
+    }
 
     /**
      * Display a listing of the resource.

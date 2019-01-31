@@ -28,8 +28,61 @@ class Galery {
             _this.actionDelete();
         })
 
+        $(".editar-galery").click(function () {
+            $("#myModalGalery").modal('show');
+            $("#btn-crear-galery").hide();
+            $("#btn-guardar-galery").show();
+            _this.id = $(this).data("id");
+            _this.actionView();
+        })
+        $("#btn-guardar-galery").click(function () {
+            _this.actionUpdate();
+        })
 
     }
+
+    public actionView() {
+        let url = this.url + '/galeria/' + this.id;
+        fetch(url, {
+            method: 'GET',
+        }).then((res) => {
+            return res.json()
+        }).catch((error) => {
+            console.error(error)
+        }).then((response) => {
+            this.id = response.id;
+            $("#nombrePresentacion").val(response.nombre);
+            $("#descripcionPresentacion").val(response.descripcion)
+        });
+    }
+
+
+    public actionUpdate() {
+        this.loadData();
+        let url = this.url + '/galery/' + this.id;
+        fetch(url, {
+            method: 'PUT',
+            body: $.param(this.data[0]),
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).then((res) => {
+            return res.json()
+        }).catch((error) => {
+            $.notify("No se encuentra la RED!", "error");
+            console.error(error.errors)
+        }).then((response) => {
+            if (response == 1) {
+                $.notify('Modificado correctamente.', "success");
+                location.reload();
+            } else {
+                for (let e of response.errors) {
+                    $.notify(e, "error");
+                }
+            }
+        });
+    }
+
 
     public loadData() {
         this.data = [{
@@ -92,12 +145,6 @@ class Galery {
         });
     }
 
-    public actionView() {
 
-    }
-
-    public actionUpdate() {
-
-    }
 }
 

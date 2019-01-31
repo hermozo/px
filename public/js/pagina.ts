@@ -73,13 +73,16 @@ class Pagina {
         fetch(url, {
             method: 'DELETE',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         }).then((res) => {
             return res.json()
         }).catch((error) => {
+            $.notify("No se encuentra la RED!", "error");
             console.error(error)
         }).then((response) => {
+            $.notify('Eliminado correctamente.', "success");
             if (response == 1) {
                 location.reload();
             }
@@ -92,6 +95,7 @@ class Pagina {
         let id = $("#keyId").data('val');
         let data = {
             titulo: contenido,
+            _token: $("input[name='_token']").val(),
         };
         let url = this.api + '/contenido/' + id;
         fetch(url, {
@@ -117,18 +121,19 @@ class Pagina {
             titulo: this.categoriaName,
             descripcion: this.categoriaDescripcion,
             idpagina: this.paginaid,
+            _token: $("input[name='_token']").val(),
         };
         fetch(url, {
             method: 'POST',
-            body: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json'
-            }
+            body: $.param(data),
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then((res) => {
             return res.json()
         }).catch((error) => {
+            $.notify("No se encuentra la RED!", "error");
             console.error(error)
         }).then((response) => {
+            $.notify('Registrado correctamente.', "success");
             if (response == 1) {
                 location.reload();
             }

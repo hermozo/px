@@ -5,7 +5,8 @@
 <link href="{{ asset('css/page.css') }}" rel="stylesheet">
 <link href="{{ asset('css/stylos.css') }}" rel="stylesheet">
 <section id="content_page">
-    <br/>
+    <br/>   
+    <br/>   
     <?php
     $text = str_replace('http://192.168.89.5:8000/', \Illuminate\Support\Facades\URL::asset('/'), $page->texto);
     ?>

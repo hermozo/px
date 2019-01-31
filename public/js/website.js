@@ -1,273 +1,184 @@
 $(document).ready(function () {
 
-	//alert($(window).width());
-    var dt = new DashTimer('#timer0').init({
-        start: {
-            fill: 'green',
-            innerRatio: .9,
-            outerRatio: 1
-        },
-        finish: {
-            fill: 'red',
-            innerRatio: .3,
-            outerRatio: 1
-        },
-        values: {
-            show: true,
-            decorate: function (d) {
-                return Math.floor(d / 10) * 10;
-            },
-            classes: "mui--text-light-secondary mui--text-caption"
-        }
-    }).setData([{
-            immediate: {
-                angle: true
-            },
-            start: {
-                angle: 1,
-                fill: '#eee'
-            },
-            finish: {
-                angle: 0,
-                fill: '#eee'
-            }
-        }, {
-            values: {
-                show: true
-            }
-        }]).start(1000, 0, .50);
 
 
-    var dt = new DashTimer('#timer1').init({
-        start: {
-            fill: 'green',
-            innerRatio: .9,
-            outerRatio: 1
-        },
-        finish: {
-            fill: 'red',
-            innerRatio: .3,
-            outerRatio: 1
-        },
-        values: {
-            show: true,
-            decorate: function (d) {
-                return Math.floor(d / 10) * 10;
-            },
-            classes: "mui--text-light-secondary mui--text-caption"
-        }
-    }).setData([{
-            immediate: {
-                angle: true
-            },
-            start: {
-                angle: 1,
-                fill: '#eee'
-            },
-            finish: {
-                angle: 0,
-                fill: '#eee'
-            }
-        }, {
-            values: {
-                show: true
-            }
-        }]).start(1000, 0, .10);
+    $(".contenidositemk").height($(window).height());
+    $(".sliderMenumk").height($(window).height());
 
+    $(".contenidositemk").css({'marginTop': $('nav').height() + 'px'})
+    $(".sliderMenumk").css({'marginTop': $('nav').height() + 'px'})
 
-    var dt = new DashTimer('#timer2').init({
-        start: {
-            fill: 'green',
-            innerRatio: .9,
-            outerRatio: 1
-        },
-        finish: {
-            fill: 'red',
-            innerRatio: .3,
-            outerRatio: 1
-        },
-        values: {
-            show: true,
-            decorate: function (d) {
-                return Math.floor(d / 10) * 10;
-            },
-            classes: "mui--text-light-secondary mui--text-caption"
-        }
-    }).setData([{
-            immediate: {
-                angle: true
-            },
-            start: {
-                angle: 1,
-                fill: '#eee'
-            },
-            finish: {
-                angle: 0,
-                fill: '#eee'
-            }
-        }, {
-            values: {
-                show: true
-            }
-        }]).start(1000, 0, .60);
+    $(window).resize(function () {
+        $(".contenidositemk").height($(window).height());
+        $(".sliderMenumk").height($(window).height());
 
-
-
-    var dt = new DashTimer('#timer3').init({
-        start: {
-            fill: 'green',
-            innerRatio: .9,
-            outerRatio: 1
-        },
-        finish: {
-            fill: 'red',
-            innerRatio: .3,
-            outerRatio: 1
-        },
-        values: {
-            show: true,
-            decorate: function (d) {
-                return Math.floor(d / 10) * 10;
-            },
-            classes: "mui--text-light-secondary mui--text-caption"
-        }
-    }).setData([{
-            immediate: {
-                angle: true
-            },
-            start: {
-                angle: 1,
-                fill: '#eee'
-            },
-            finish: {
-                angle: 0,
-                fill: '#eee'
-            }
-        }, {
-            values: {
-                show: true
-            }
-        }]).start(1000, 0, .70);
-
-
-
-    var dt = new DashTimer('#timer4').init({
-        start: {
-            fill: 'green',
-            innerRatio: .9,
-            outerRatio: 1
-        },
-        finish: {
-            fill: 'red',
-            innerRatio: .3,
-            outerRatio: 1
-        },
-        values: {
-            show: true,
-            decorate: function (d) {
-                return Math.floor(d / 10) * 10;
-            },
-            classes: "mui--text-light-secondary mui--text-caption"
-        }
-    }).setData([{
-            immediate: {
-                angle: true
-            },
-            start: {
-                angle: 1,
-                fill: '#eee'
-            },
-            finish: {
-                angle: 0,
-                fill: '#eee'
-            }
-        }, {
-            values: {
-                show: true
-            }
-        }]).start(1000, 0, .100);
-
-    /*$('#sidebarCollapse').on('click', function () {
-     $('#sidebar_left').toggleClass('activeOn');
-     //$('#collapseExample').animate({width: 'toggle'}, 200);
-     //$(this).toggleClass('active');
-     });*/
-    /*$( "#sidebarCollapse" ).toggle( "slow", function() {
-     // Animation complete.
-     });*/
-    /*$("#menu-toggle").click(function (e) {
-        e.preventDefault();
-        $("#app").toggleClass("toggled");
-    });*/
-    $('#dismiss, .overlay').on('click', function () {
-        $('#sidebar').removeClass('active');
-        $('.overlay').fadeOut();
+        $(".contenidositemk").css({'marginTop': $('nav').height() + 'px'})
+        $(".sliderMenumk").css({'marginTop': $('nav').height() + 'px'})
     });
 
+
+    $('.owl-carousel').owlCarousel({
+
+        nav: true,
+        dots: false,
+        items: 1,
+        merge: true,
+        loop: true,
+        margin: 10,
+        video: true,
+        lazyLoad: true,
+        center: true,
+
+    });
+	
+	
+	function estrellas(){
+		var x = parseInt(localStorage.getItem("estrellas")) - 1;
+		var y = 0;
+		$.each($(".startbtncalificacion"), function( i, val ) {
+			if(y <= x){
+				  $(val).css('cssText', 'color: #ffd65e !important');
+			}else{
+				  $(val).css('cssText', '');
+			}
+		  y++;
+		});
+				
+	}
+	
+	
+	$(".startbtncalificacion").click(function(){
+		localStorage.setItem("estrellas", $(this).data('punt'));
+		estrellas();
+	})
+	estrellas();
+
+	
+	
+	
+	
+	
+	
+	
+	
+	function estadomenu(data){
+		if(data == 0){
+				$(".sliderMenumk2").addClass('animated slideInLeft');
+				$(".sliderMenumk2").css({'display':'block'});
+				$(".contenidositemk").removeClass('col-md-12');
+				$(".contenidositemk").addClass('col-md-10');
+				$("#navegarmenu").html('<i class="fas fa-times"></i>');
+			}else{
+				$(".sliderMenumk2").addClass('animated slideInRight');
+				$(".sliderMenumk2").css({'display':'none'});
+				$(".contenidositemk").removeClass('col-md-10');
+				$(".contenidositemk").addClass('col-md-12');	
+				$("#navegarmenu").html('<i class="fas fa-bars"></i>');
+			}
+	}
+	/*****Ini menu*******/
+	$.get($("#urlPathURLX").attr('name')+'/menupx').done(function(data){
+			estadomenu(data);
+		})
+	$("#navegarmenu").click(function(){
+		$.get($("#urlPathURLX").attr('name')+'/menupx/'+1).done(function(data){
+			estadomenu(data);
+		})
+	})
+	
+	
+	
+
     $('#sidebarCollapse').on('click', function () {
-        $('#sidebar').addClass('active');
-        $('.overlay').fadeIn();
+        $('#sidebar, #content').toggleClass('active');
         $('.collapse.in').toggleClass('in');
         $('a[aria-expanded=true]').attr('aria-expanded', 'false');
     });
-    
-    $('.menu_list > li > i.fas, .dropdown_menu > li > i.fas').click(function () {
-    	$(this).toggleClass("fa-angle-up");
-    	var display = $(this).next().css("display");
-        if(display=="none")
-        	$(this).next().show('blind');
+
+    $('.menu_list > li > a.btn_plusdd, .dropdown_menu > li > a.btn_plusdd').click(function (event) {
+        $(this).next().toggleClass("fa-angle-up");
+        var display = $(this).next().next().css("display");
+        if (display == "none")
+            $(this).next().next().show('blind');
         else
-        	$(this).next().hide('blind');
-        /*$(this).next().css("height",0);
-        $(this).next().animate({
-            height: "auto !important",
-            opacity: 1,
-            transition: "opacity 1s ease-in-out"           
-          }, 1500 );*/
+            $(this).next().next().hide('blind');
+        event.preventDefault();
     });
-    $('.bxslider').bxSlider({
-        mode: 'fade',
-        captions: true,
-        pager: true,
-        auto: true,
-        controls: false,
+
+    $('.menu_list > li > i.fas, .dropdown_menu > li > i.fas').click(function () {
+        $(this).toggleClass("fa-angle-up");
+        var display = $(this).next().css("display");
+        if (display == "none")
+            $(this).next().show('blind');
+        else
+            $(this).next().hide('blind');
     });
-    $(document).on("click", ".choice_item", function(){
-    	//alert($(this).attr("id"));
-    	$.get("/detail/"+$(this).attr("id"), function(response){
-    		$("#content_modal").html(response);
-    		$('#modal_view').modal('show');
-    	})
+
+    $(document).on("click", ".choice_item", function () {
+        //alert($(this).attr("id"));
+        $.get("/detail/" + $(this).attr("id"), function (response) {
+            $("#content_modal").html(response);
+            $('#modal_view').modal('show');
+        })
     });
-    $("#btn_faq").click(function(){
-    	//alert($(this).attr("id"));
-    	$.get("/faq", function(response){
-    		$("#content_modal").html(response);
-    		$('#modal_view').modal('show');
-    	})
+
+
+    $("#btn_faq").click(function () {
+        //alert($(this).attr("id"));
+        $.get("/faq", function (response) {
+            $("#content_modal").html(response);
+            $('#modal_view').modal('show');
+        })
     });
-    
+
     /*$(window).on('hashchange',function(){
-		page = window.location.hash.replace('#','');
-		console.log(location.search.substring(1));
-		getProducts(page);
-	});*/
-	$(document).on('click','.pagination .page-item a', function(e){
-		e.preventDefault();
-		var page = $(this).attr('href').split('page=')[1];
-		$.ajax({
-			url: '/noticias?page=' + page+'&ajax=1'
-		}).done(function(data){
-			$('#content_nt').html(data);
-			window.history.pushState("Details", "Title", "/noticias?page="+page);
-		});
-	});
-	function getProducts(page){
-		$.ajax({
-			url: '/noticias?page=' + page+'&ajax=1'
-		}).done(function(data){
-			$('#content_nt').html(data);
-			window.history.pushState("Details", "Title", "/noticias?page=1");
-		});
-	}
+     page = window.location.hash.replace('#','');
+     console.log(location.search.substring(1));
+     getProducts(page);
+     });*/
+    $(document).on('click', '.pagination .page-item a', function (e) {
+        e.preventDefault();
+        var page = $(this).attr('href').split('page=')[1];
+        var linkd = $(this).attr('href').split('?page=')[0];
+        var linkan = linkd.split('/')[3];
+        //console.log(linkan);
+        $.ajax({
+            url: '/' + linkan + '?page=' + page + '&ajax=1'
+        }).done(function (data) {
+            $('#content_nt').html(data);
+            window.history.pushState("Details", "Title", "/" + linkan + "?page=" + page);
+        });
+    });
+    function getProducts(page) {
+        $.ajax({
+            url: '/noticias?page=' + page + '&ajax=1'
+        }).done(function (data) {
+            $('#content_nt').html(data);
+            window.history.pushState("Details", "Title", "/noticias?page=1");
+        });
+    }
+    /*$(".direccion").click(function(){
+     alert("Si");
+     var lat = parseFloat($(this).data("lat"));
+     var lng = parseFloat($(this).data("lng"));
+     var p = parseInt($(this).data("param"));
+     var ubi = {lat: lat, lng: lng};
+     initMap(ubi); 
+     parom(ubi,p);
+     });*/
+    $(window).scroll(function () {
+        //Display or hide scroll to top button
+        var windowTop = $(this).scrollTop();
+        var topMenuFixed = 100;
+        var windowHeight = $(window).height();
+        var documentHeight = $(document).height();
+        //console.log($(this).scrollTop()+" "+windowHeight+" "+documentHeight+" "+(windowHeight+topMenuFixed));
+        if ($(this).scrollTop() > topMenuFixed && documentHeight > (windowHeight + topMenuFixed)) {
+            $('#sidebar').addClass('nav-fixed-left');
+            $('#content').addClass('cnt-fixed-left');
+        } else {
+            $('#sidebar').removeClass('nav-fixed-left');
+            $('#content').removeClass('cnt-fixed-left');
+        }
+    });
 });

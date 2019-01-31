@@ -11,25 +11,25 @@
 
 
 <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-4">
         <img src="{{ isset($datos->portal)?URL::to('images/').'/'.$datos->portal:URL::to('images/unnamed.jpg') }}" class="img-responsive" id="imgUploadChange">
         <div class="row">
             <div class="col-xs-12">
 
-                <span id="imgUploadnoticias" name="<?= URL::to('multimedia') ?>"></span>
+                <span id="imgUploadnoticias" name="<?= URL::to('uploadservidor') ?>"></span>
                 <span id="referenciaImagen" name="{{URL::to('images/')}}"></span>
                 <form method='post' action='' class="btn-file" enctype='multipart/form-data'>
                     <input  id="multiuniupload" type="file" name="file[]" id="file" multiple>
-                </form>  
+                </form>
                 <!--button class="btn btn-danger" id="irGaleria" style="width: 100%"> Galeria</button-->
             </div>
         </div>
-    </div> 
+    </div>
     <div class="col-md-8">
         <form class="form-horizontal" id="form-infomaciones">
             {{ csrf_field() }}
             <div class="form-group">
-                <label for="form-titulo" class="col-sm-2 control-label">Titulo</label>
+                <label for="form-titulo" class="col-sm-2 control-label">Título</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" name="titulo" id="form-titulo" value="{{ isset($datos->titulo)?$datos->titulo:'' }}"/>
                 </div>
@@ -43,7 +43,7 @@
             <div class="form-group">
                 <label for="inputPassword3" class="col-sm-2 control-label">Publicado</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" name="from" id="from" placeholder="Desde" value="{{ isset($datos->fechainicio)?$datos->fechainicio:'' }}">
+                    <input type="text" class="form-control" name="from" id="from" placeholder="Desde" value="{{ isset($datos->fechainicio)?$datos->fechainicio:date('Y-m-d') }}">
                 </div>
                 <div class="col-sm-5">
                     <input type="text" class="form-control"  name="to" id="to" placeholder="Hasta" value="{{ isset($datos->fechafinal)?$datos->fechafinal:'' }}">
@@ -53,7 +53,7 @@
             </div>
 
         </form>
-    </div> 
+    </div>
 </div>
 
 <br/>

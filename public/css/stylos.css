@@ -16,6 +16,13 @@
   padding: 20px;
   margin-top: 20px;
 }
+.d-marcosub {
+  border: 1px solid #0a527e;
+  border-style: dashed;
+  padding: 10px;
+  margin-top: 20px;
+  font-size: 12px !important;
+}
 /* página principios */
 .d-lista {
   list-style: none;

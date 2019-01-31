@@ -52,13 +52,16 @@ var Pagina = /** @class */ (function () {
         fetch(url, {
             method: 'DELETE',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         }).then(function (res) {
             return res.json();
         }).catch(function (error) {
+            $.notify("No se encuentra la RED!", "error");
             console.error(error);
         }).then(function (response) {
+            $.notify('Eliminado correctamente.', "success");
             if (response == 1) {
                 location.reload();
             }
@@ -70,6 +73,7 @@ var Pagina = /** @class */ (function () {
         var id = $("#keyId").data('val');
         var data = {
             titulo: contenido,
+            _token: $("input[name='_token']").val(),
         };
         var url = this.api + '/contenido/' + id;
         fetch(url, {
@@ -94,18 +98,19 @@ var Pagina = /** @class */ (function () {
             titulo: this.categoriaName,
             descripcion: this.categoriaDescripcion,
             idpagina: this.paginaid,
+            _token: $("input[name='_token']").val(),
         };
         fetch(url, {
             method: 'POST',
-            body: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json'
-            }
+            body: $.param(data),
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         }).then(function (res) {
             return res.json();
         }).catch(function (error) {
+            $.notify("No se encuentra la RED!", "error");
             console.error(error);
         }).then(function (response) {
+            $.notify('Registrado correctamente.', "success");
             if (response == 1) {
                 location.reload();
             }

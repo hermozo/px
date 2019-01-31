@@ -20,7 +20,59 @@ var Galery = /** @class */ (function () {
         $("#eliminar-galery-btn").click(function () {
             _this.actionDelete();
         });
+        $(".editar-galery").click(function () {
+            $("#myModalGalery").modal('show');
+            $("#btn-crear-galery").hide();
+            $("#btn-guardar-galery").show();
+            _this.id = $(this).data("id");
+            _this.actionView();
+        });
+        $("#btn-guardar-galery").click(function () {
+            _this.actionUpdate();
+        });
     }
+    Galery.prototype.actionView = function () {
+        var _this_1 = this;
+        var url = this.url + '/galeria/' + this.id;
+        fetch(url, {
+            method: 'GET',
+        }).then(function (res) {
+            return res.json();
+        }).catch(function (error) {
+            console.error(error);
+        }).then(function (response) {
+            _this_1.id = response.id;
+            $("#nombrePresentacion").val(response.nombre);
+            $("#descripcionPresentacion").val(response.descripcion);
+        });
+    };
+    Galery.prototype.actionUpdate = function () {
+        this.loadData();
+        var url = this.url + '/galery/' + this.id;
+        fetch(url, {
+            method: 'PUT',
+            body: $.param(this.data[0]),
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).then(function (res) {
+            return res.json();
+        }).catch(function (error) {
+            $.notify("No se encuentra la RED!", "error");
+            console.error(error.errors);
+        }).then(function (response) {
+            if (response == 1) {
+                $.notify('Modificado correctamente.', "success");
+                location.reload();
+            }
+            else {
+                for (var _i = 0, _a = response.errors; _i < _a.length; _i++) {
+                    var e = _a[_i];
+                    $.notify(e, "error");
+                }
+            }
+        });
+    };
     Galery.prototype.loadData = function () {
         this.data = [{
                 nombre: $("#nombrePresentacion").val(),
@@ -80,10 +132,6 @@ var Galery = /** @class */ (function () {
                 }, 500);
             }
         });
-    };
-    Galery.prototype.actionView = function () {
-    };
-    Galery.prototype.actionUpdate = function () {
     };
     return Galery;
 }());
